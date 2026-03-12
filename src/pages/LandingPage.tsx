@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,7 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
+    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } as Transition,
   }),
 };
 

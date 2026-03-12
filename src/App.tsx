@@ -3,10 +3,24 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import LandingPage from "./pages/LandingPage";
+import DashboardLayout from "./components/DashboardLayout";
+import DashboardHome from "./pages/DashboardHome";
+import AIGenerator from "./pages/AIGenerator";
+import ImageGenerator from "./pages/ImageGenerator";
+import DesignStudio from "./pages/DesignStudio";
+import ContentCalendar from "./pages/ContentCalendar";
+import MediaLibrary from "./pages/MediaLibrary";
+import TrendEngine from "./pages/TrendEngine";
+import Analytics from "./pages/Analytics";
+import SettingsPage from "./pages/SettingsPage";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+const DashboardPage = ({ children }: { children: React.ReactNode }) => (
+  <DashboardLayout>{children}</DashboardLayout>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -15,8 +29,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<DashboardPage><DashboardHome /></DashboardPage>} />
+          <Route path="/dashboard/generator" element={<DashboardPage><AIGenerator /></DashboardPage>} />
+          <Route path="/dashboard/images" element={<DashboardPage><ImageGenerator /></DashboardPage>} />
+          <Route path="/dashboard/design" element={<DashboardPage><DesignStudio /></DashboardPage>} />
+          <Route path="/dashboard/calendar" element={<DashboardPage><ContentCalendar /></DashboardPage>} />
+          <Route path="/dashboard/media" element={<DashboardPage><MediaLibrary /></DashboardPage>} />
+          <Route path="/dashboard/trends" element={<DashboardPage><TrendEngine /></DashboardPage>} />
+          <Route path="/dashboard/analytics" element={<DashboardPage><Analytics /></DashboardPage>} />
+          <Route path="/dashboard/settings" element={<DashboardPage><SettingsPage /></DashboardPage>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
