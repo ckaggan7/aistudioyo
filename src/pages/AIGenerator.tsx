@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 10 },
@@ -33,15 +34,22 @@ export default function AIGenerator() {
       return;
     }
     setLoading(true);
-    // Simulate AI generation
-    await new Promise((r) => setTimeout(r, 2000));
-    setResult({
-      hook: `🔥 Stop scrolling — this ${topic} tip will change everything`,
-      caption: `Here's what nobody tells you about ${topic}. We've been working on something special at ${brand || "our studio"}, and today we're finally sharing it with you. This is for every ${audience || "creator"} who wants to level up. 💪`,
-      description: `A comprehensive ${contentType} about ${topic} targeting ${audience || "your audience"} with a ${tone} tone. Perfect for ${platform}.`,
-      hashtags: `#${topic.replace(/\s+/g, "")} #ContentCreator #SocialMediaMarketing #AI #VibeStudio #${platform} #Trending`,
-    });
-    setLoading(false);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-content", {
+        body: { platform, contentType, brand, audience, tone, topic },
+      });
+
+      if (error) throw error;
+      if (data.error) throw new Error(data.error);
+
+      setResult(data);
+      toast.success("Content generated!");
+    } catch (e: any) {
+      console.error("Generation error:", e);
+      toast.error(e.message || "Failed to generate content");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const copyToClipboard = (text: string) => {
