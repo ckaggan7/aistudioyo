@@ -63,7 +63,7 @@ export default function LandingPage() {
             </Link>
             <Link to="/signup">
               <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity">
-                Start Free
+                Join the Waitlist
               </Button>
             </Link>
           </div>
@@ -134,7 +134,7 @@ export default function LandingPage() {
             >
               <Link to="/signup">
                 <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
-                  Start Free <ArrowRight className="ml-2 w-4 h-4" />
+                  Join the Waitlist <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
               <Link to="/dashboard">
@@ -206,7 +206,7 @@ export default function LandingPage() {
           </p>
           <Link to="/signup">
             <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
-              Get Started Free <ArrowRight className="ml-2 w-4 h-4" />
+              Join the Waitlist <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
         </motion.div>
