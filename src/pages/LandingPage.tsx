@@ -72,64 +72,13 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left — Image */}
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={0}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
-          >
-            <Sparkles className="w-4 h-4" />
-            AI-Powered Content Creation
-          </motion.div>
-
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={1}
-            className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
-          >
-            Create Social Media
-            <br />
-            <span className="text-gradient-hero">Content with AI</span>
-          </motion.h1>
-
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={2}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-          >
-            Generate captions, design visuals, and schedule posts — all in one studio. Built for creators and agencies who move fast.
-          </motion.p>
-
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={3}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link to="/signup">
-              <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
-                Start Free <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <Link to="/dashboard">
-              <Button variant="outline" size="lg" className="h-12 text-base px-8">
-                View Demo
-              </Button>
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-16 max-w-5xl mx-auto"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            className="order-2 lg:order-1"
           >
             <div className="rounded-2xl overflow-hidden shadow-elevated border border-border/50">
               <img
@@ -140,6 +89,61 @@ export default function LandingPage() {
               />
             </div>
           </motion.div>
+
+          {/* Right — Content */}
+          <div className="order-1 lg:order-2 text-center lg:text-left">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={0}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
+            >
+              <Sparkles className="w-4 h-4" />
+              AI-Powered Content Creation
+            </motion.div>
+
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={1}
+              className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
+            >
+              Create Social Media
+              <br />
+              <span className="text-gradient-hero">Content with AI</span>
+            </motion.h1>
+
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={2}
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
+            >
+              Generate captions, design visuals, and schedule posts — all in one studio. Built for creators and agencies who move fast.
+            </motion.p>
+
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={3}
+              className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
+            >
+              <Link to="/signup">
+                <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
+                  Start Free <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/dashboard">
+                <Button size="lg" className="h-12 text-base px-8 border-2 border-primary text-primary bg-primary/5 hover:bg-primary/10 transition-colors font-semibold">
+                  View Demo <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
