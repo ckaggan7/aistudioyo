@@ -14,6 +14,7 @@ import MediaLibrary from "./pages/MediaLibrary";
 import TrendEngine from "./pages/TrendEngine";
 import Analytics from "./pages/Analytics";
 import SettingsPage from "./pages/SettingsPage";
+import WaitlistPage from "./pages/WaitlistPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
