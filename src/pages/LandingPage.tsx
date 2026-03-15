@@ -134,7 +134,7 @@ export default function LandingPage() {
             >
               <Link to="/signup">
                 <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
-                  Start Free <ArrowRight className="ml-2 w-4 h-4" />
+                  Join the Waitlist <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
               <Link to="/dashboard">
