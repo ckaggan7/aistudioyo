@@ -63,7 +63,7 @@ export default function LandingPage() {
             </Link>
             <Link to="/signup">
               <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity">
-                Start Free
+                Join the Waitlist
               </Button>
             </Link>
           </div>
