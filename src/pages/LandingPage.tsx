@@ -2,6 +2,7 @@ import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-image.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
