@@ -15,6 +15,7 @@ import TrendEngine from "./pages/TrendEngine";
 import Analytics from "./pages/Analytics";
 import SettingsPage from "./pages/SettingsPage";
 import WaitlistPage from "./pages/WaitlistPage";
+import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<WaitlistPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<DashboardPage><DashboardHome /></DashboardPage>} />
           <Route path="/dashboard/generator" element={<DashboardPage><AIGenerator /></DashboardPage>} />
           <Route path="/dashboard/images" element={<DashboardPage><ImageGenerator /></DashboardPage>} />
