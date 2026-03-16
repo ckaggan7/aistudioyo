@@ -50,7 +50,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-10">
           <Link to="/" className="text-2xl font-bold tracking-tight">
-            <span className="text-gradient-hero">Vibe</span>Studio
+            AI <span className="text-gradient-hero">STUDIYO</span>
           </Link>
         </div>
 
