@@ -1,7 +1,8 @@
 import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image } from "lucide-react";
+import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.png";
 
 const fadeUp = {
@@ -182,6 +183,104 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Simple credit-based pricing
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              1 credit = 1 AI generation. Start free, upgrade when you need more.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Free",
+                price: "$0",
+                period: "forever",
+                credits: "5 credits / day",
+                features: ["AI text generation", "AI image generation", "Basic templates", "Community support"],
+                cta: "Join the Waitlist",
+                highlight: false,
+              },
+              {
+                name: "Pro",
+                price: "$9",
+                period: "/ month",
+                credits: "100 credits / day",
+                features: ["Everything in Free", "Priority generation", "Advanced templates", "Content calendar", "Email support"],
+                cta: "Join the Waitlist",
+                highlight: true,
+              },
+              {
+                name: "Business",
+                price: "$29",
+                period: "/ month",
+                credits: "Unlimited credits",
+                features: ["Everything in Pro", "Team collaboration", "Custom branding", "Analytics dashboard", "API access", "Dedicated support"],
+                cta: "Join the Waitlist",
+                highlight: false,
+              },
+            ].map((plan, i) => (
+              <motion.div
+                key={plan.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={i}
+                className={cn(
+                  "rounded-2xl p-6 flex flex-col",
+                  plan.highlight
+                    ? "bg-gradient-hero text-primary-foreground shadow-elevated ring-2 ring-primary/30 scale-[1.03]"
+                    : "bg-card shadow-card border border-border/50"
+                )}
+              >
+                <h3 className="text-lg font-semibold mb-1">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className={cn("text-sm", plan.highlight ? "text-primary-foreground/70" : "text-muted-foreground")}>{plan.period}</span>
+                </div>
+                <p className={cn("text-sm font-medium mb-6", plan.highlight ? "text-primary-foreground/80" : "text-primary")}>{plan.credits}</p>
+
+                <ul className="space-y-2.5 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <Check className={cn("w-4 h-4 mt-0.5 shrink-0", plan.highlight ? "text-primary-foreground" : "text-primary")} />
+                      <span className={plan.highlight ? "text-primary-foreground/90" : ""}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link to="/signup" className="mt-auto">
+                  <Button
+                    size="lg"
+                    className={cn(
+                      "w-full h-12 text-base",
+                      plan.highlight
+                        ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                        : "bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity"
+                    )}
+                  >
+                    {plan.cta}
+                  </Button>
+                </Link>
               </motion.div>
             ))}
           </div>
