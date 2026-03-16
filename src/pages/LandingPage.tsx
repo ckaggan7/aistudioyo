@@ -1,7 +1,8 @@
 import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image } from "lucide-react";
+import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.png";
 
 const fadeUp = {
