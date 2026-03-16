@@ -73,7 +73,7 @@ export default function WaitlistPage() {
           Join the <span className="text-gradient-hero">Waitlist</span>
         </h1>
         <p className="text-muted-foreground mb-8">
-          Be the first to experience VibeStudio AI when we launch.
+          Be the first to experience AI STUDIYO when we launch.
         </p>
 
         {joined ? (

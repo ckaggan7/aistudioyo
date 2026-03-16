@@ -47,7 +47,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       >
         <div className="h-16 flex items-center justify-between px-6 border-b border-sidebar-border">
           <Link to="/" className="text-lg font-bold tracking-tight">
-            <span className="text-gradient-hero">Vibe</span>Studio
+            AI <span className="text-gradient-hero">STUDIYO</span>
           </Link>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-muted-foreground">
             <X className="w-5 h-5" />

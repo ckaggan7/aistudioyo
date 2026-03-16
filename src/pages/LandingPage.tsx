@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/hero-image.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -51,101 +50,82 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="text-xl font-bold tracking-tight">
-            <span className="text-gradient-hero">Vibe</span>Studio
+            AI <span className="text-gradient-hero">STUDIYO</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
             <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
             <Link to="/login">
-              <Button variant="ghost" size="sm">Log in</Button>
+              <Button variant="outline" size="sm" className="rounded-full px-5">Log in</Button>
             </Link>
             <Link to="/signup">
-              <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity">
-                Join the Waitlist
+              <Button size="sm" className="rounded-full px-5 bg-foreground text-background hover:bg-foreground/90">
+                Get started
               </Button>
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left — Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="order-2 lg:order-1"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-elevated border border-border/50">
-              <img
-                src={heroImage}
-                alt="VibeStudio AI dashboard preview showing social media content management"
-                className="w-full h-auto"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-          {/* Right — Content */}
-          <div className="order-1 lg:order-2 text-center lg:text-left">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              custom={0}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
-            >
-              <Sparkles className="w-4 h-4" />
-              AI-Powered Content Creation
-            </motion.div>
-
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              custom={1}
-              className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
-            >
-              Create Social Media
-              <br />
-              <span className="text-gradient-hero">Content with AI</span>
-            </motion.h1>
-
-            <motion.p
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              custom={2}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
-            >
-              Generate captions, design visuals, and schedule posts — all in one studio. Built for creators and agencies who move fast.
-            </motion.p>
-
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              custom={3}
-              className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
-            >
-              <Link to="/signup">
-                <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
-                  Join the Waitlist <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-              <Link to="/dashboard">
-                <Button size="lg" className="h-12 text-base px-8 border-2 border-primary text-primary bg-primary/5 hover:bg-primary/10 transition-colors font-semibold">
-                  View Demo <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
+      {/* Hero — Lovable-style full-screen gradient with centered content */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(40,95%,85%)] via-[hsl(330,80%,75%)] to-[hsl(260,85%,70%)] opacity-60" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-[hsl(20,90%,80%/0.5)] blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[hsl(280,80%,70%/0.4)] blur-[120px]" />
+          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(350,85%,75%/0.4)] blur-[100px]" />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center max-w-3xl"
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 text-foreground">
+            Create content
+            <br />
+            with AI
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-lg md:text-xl text-foreground/70 max-w-xl mx-auto mb-12"
+          >
+            Generate captions, design visuals, and schedule posts — all in one studio.
+          </motion.p>
+
+          {/* Prompt-style CTA card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="w-full max-w-xl mx-auto"
+          >
+            <Link to="/signup">
+              <div className="bg-card/90 backdrop-blur-xl rounded-2xl shadow-elevated border border-border/50 p-5 text-left hover:shadow-glow transition-shadow duration-500 cursor-pointer group">
+                <p className="text-muted-foreground text-sm md:text-base mb-8">
+                  Describe the content you want to create...
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    AI-powered
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-4 h-4 text-background" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Features */}
@@ -301,7 +281,7 @@ export default function LandingPage() {
             Ready to level up your content?
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
-            Join thousands of creators using VibeStudio AI to grow their audience.
+            Join thousands of creators using AI STUDIYO to grow their audience.
           </p>
           <Link to="/signup">
             <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base">
@@ -314,7 +294,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-sm text-muted-foreground">© 2026 VibeStudio AI. All rights reserved.</span>
+          <span className="text-sm text-muted-foreground">© 2026 AI STUDIYO. All rights reserved.</span>
           <div className="flex gap-6">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms</a>
