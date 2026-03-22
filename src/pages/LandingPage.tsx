@@ -71,33 +71,87 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero — Lovable-style full-screen gradient with centered content */}
+      {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-        {/* Gradient background */}
+        {/* Animated gradient background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-[hsl(40,95%,85%)] via-[hsl(330,80%,75%)] to-[hsl(260,85%,70%)] opacity-60" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-[hsl(20,90%,80%/0.5)] blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[hsl(280,80%,70%/0.4)] blur-[120px]" />
-          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(350,85%,75%/0.4)] blur-[100px]" />
+          <motion.div
+            animate={{ x: [0, 30, -20, 0], y: [0, -20, 15, 0], scale: [1, 1.1, 0.95, 1] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-[hsl(20,90%,80%/0.5)] blur-[150px]"
+          />
+          <motion.div
+            animate={{ x: [0, -25, 20, 0], y: [0, 25, -10, 0], scale: [1, 0.9, 1.1, 1] }}
+            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[hsl(280,80%,70%/0.4)] blur-[120px]"
+          />
+          <motion.div
+            animate={{ x: [0, 20, -15, 0], y: [0, -15, 20, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(350,85%,75%/0.4)] blur-[100px]"
+          />
         </div>
+
+        {/* Floating tool icons */}
+        {[
+          { icon: Image, x: "10%", y: "20%", delay: 0 },
+          { icon: PenLine, x: "85%", y: "25%", delay: 0.5 },
+          { icon: Calendar, x: "8%", y: "70%", delay: 1 },
+          { icon: BarChart3, x: "88%", y: "65%", delay: 1.5 },
+          { icon: Wand2, x: "20%", y: "45%", delay: 0.8 },
+          { icon: Palette, x: "80%", y: "45%", delay: 1.2 },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            className="absolute hidden lg:flex w-11 h-11 rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-card items-center justify-center"
+            style={{ left: item.x, top: item.y }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 0.7, scale: 1, y: [0, -10, 0] }}
+            transition={{
+              opacity: { delay: 0.8 + item.delay, duration: 0.5 },
+              scale: { delay: 0.8 + item.delay, duration: 0.5, type: "spring" },
+              y: { delay: 1.3 + item.delay, duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut" },
+            }}
+            whileHover={{ opacity: 1, scale: 1.15 }}
+          >
+            <item.icon className="w-5 h-5 text-primary/70" />
+          </motion.div>
+        ))}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center max-w-3xl"
+          className="text-center max-w-4xl relative z-10"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 text-foreground">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 shadow-card text-xs font-medium text-muted-foreground mb-8"
+          >
+            <motion.span
+              animate={{ rotate: [0, 15, -15, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+            </motion.span>
+            AI-powered content studio
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-6 text-foreground">
             Create content
             <br />
-            with AI
+            <span className="text-gradient-hero">with AI</span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl text-foreground/70 max-w-xl mx-auto mb-12"
+            className="text-lg md:text-xl text-foreground/60 max-w-xl mx-auto mb-12"
           >
             Generate captions, design visuals, and schedule posts — all in one studio.
           </motion.p>
@@ -110,22 +164,38 @@ export default function LandingPage() {
             className="w-full max-w-xl mx-auto"
           >
             <Link to="/signup">
-              <div className="bg-card/90 backdrop-blur-xl rounded-2xl shadow-elevated border border-border/50 p-5 text-left hover:shadow-glow transition-shadow duration-500 cursor-pointer group">
+              <div className="bg-card/90 backdrop-blur-xl rounded-2xl shadow-elevated border border-border/50 p-5 text-left hover:shadow-glow transition-all duration-500 cursor-pointer group hover:scale-[1.02]">
                 <p className="text-muted-foreground text-sm md:text-base mb-8">
                   Describe the content you want to create...
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    AI-powered
+                  <div className="flex items-center gap-3">
+                    <div className="flex -space-x-1.5">
+                      {[Sparkles, Image, PenLine].map((Icon, idx) => (
+                        <div key={idx} className="w-6 h-6 rounded-full bg-secondary border border-border/50 flex items-center justify-center">
+                          <Icon className="w-3 h-3 text-muted-foreground" />
+                        </div>
+                      ))}
+                    </div>
+                    <span className="text-xs text-muted-foreground">Text · Image · Design</span>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-full bg-foreground flex items-center justify-center group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-4 h-4 text-background" />
                   </div>
                 </div>
               </div>
             </Link>
           </motion.div>
+
+          {/* Social proof */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="mt-8 text-xs text-muted-foreground"
+          >
+            Join 2,000+ creators on the waitlist
+          </motion.p>
         </motion.div>
       </section>
 
