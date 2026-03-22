@@ -1,6 +1,6 @@
 import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check } from "lucide-react";
+import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check, MessageSquareText, Wand2, BarChart3, Send, PenLine, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
