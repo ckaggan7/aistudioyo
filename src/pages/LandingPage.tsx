@@ -56,6 +56,7 @@ export default function LandingPage() {
             AI <span className="text-gradient-hero">STUDIYO</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
+            <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it works</a>
             <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
             <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
             <Link to="/login">
@@ -126,6 +127,97 @@ export default function LandingPage() {
             </Link>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/5 blur-[120px]" />
+        </div>
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0}
+            className="text-center mb-20"
+          >
+            <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">How it works</p>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+              Three steps to viral content
+            </h2>
+          </motion.div>
+
+          <div className="relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-16 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-border" />
+
+            <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+              {[
+                {
+                  step: "01",
+                  title: "Describe your idea",
+                  description: "Type a prompt — your topic, tone, platform, and vibe. Our AI understands context like a creative partner.",
+                  icon: Sparkles,
+                },
+                {
+                  step: "02",
+                  title: "Generate & refine",
+                  description: "Get captions, images, and designs in seconds. Edit, remix, or regenerate until it's perfect.",
+                  icon: Zap,
+                },
+                {
+                  step: "03",
+                  title: "Schedule & grow",
+                  description: "Plan your calendar, publish across platforms, and watch your engagement soar with analytics.",
+                  icon: TrendingUp,
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.step}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  custom={i + 1}
+                  className="relative text-center group"
+                >
+                  {/* Step number circle */}
+                  <div className="relative mx-auto mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-card border border-border/80 shadow-card flex items-center justify-center mx-auto group-hover:shadow-glow group-hover:border-primary/30 transition-all duration-500">
+                      <item.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold flex items-center justify-center">
+                      {item.step}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-semibold mb-3 tracking-tight">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA under steps */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={4}
+            className="text-center mt-16"
+          >
+            <Link to="/signup">
+              <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base rounded-full">
+                Try it free <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* Features */}
