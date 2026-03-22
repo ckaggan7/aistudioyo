@@ -151,7 +151,7 @@ export default function LandingPage() {
 
           <div className="relative">
             {/* Connecting line */}
-            <div className="hidden md:block absolute top-16 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-border" />
+            <div className="hidden md:block absolute top-24 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-border" />
 
             <div className="grid md:grid-cols-3 gap-12 md:gap-8">
               {[
@@ -160,18 +160,24 @@ export default function LandingPage() {
                   title: "Describe your idea",
                   description: "Type a prompt — your topic, tone, platform, and vibe. Our AI understands context like a creative partner.",
                   icon: Sparkles,
+                  orbitIcons: [MessageSquareText, PenLine, Layers],
+                  gradient: "from-[hsl(var(--primary)/0.15)] to-[hsl(260,85%,60%,0.1)]",
                 },
                 {
                   step: "02",
                   title: "Generate & refine",
                   description: "Get captions, images, and designs in seconds. Edit, remix, or regenerate until it's perfect.",
                   icon: Zap,
+                  orbitIcons: [Wand2, Image, Palette],
+                  gradient: "from-[hsl(260,85%,60%,0.15)] to-[hsl(190,90%,50%,0.1)]",
                 },
                 {
                   step: "03",
                   title: "Schedule & grow",
                   description: "Plan your calendar, publish across platforms, and watch your engagement soar with analytics.",
                   icon: TrendingUp,
+                  orbitIcons: [Calendar, Send, BarChart3],
+                  gradient: "from-[hsl(190,90%,50%,0.15)] to-[hsl(var(--primary)/0.1)]",
                 },
               ].map((item, i) => (
                 <motion.div
@@ -183,12 +189,43 @@ export default function LandingPage() {
                   custom={i + 1}
                   className="relative text-center group"
                 >
-                  {/* Step number circle */}
-                  <div className="relative mx-auto mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-card border border-border/80 shadow-card flex items-center justify-center mx-auto group-hover:shadow-glow group-hover:border-primary/30 transition-all duration-500">
+                  {/* Animated illustration */}
+                  <div className="relative mx-auto mb-8 w-36 h-36">
+                    {/* Ambient glow */}
+                    <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.gradient} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+
+                    {/* Orbiting icons */}
+                    {item.orbitIcons.map((OrbitIcon, oi) => {
+                      const angle = (oi * 120) - 30;
+                      const rad = (angle * Math.PI) / 180;
+                      const radius = 58;
+                      const x = Math.cos(rad) * radius;
+                      const y = Math.sin(rad) * radius;
+                      return (
+                        <motion.div
+                          key={oi}
+                          className="absolute top-1/2 left-1/2 w-8 h-8 -ml-4 -mt-4 rounded-lg bg-card border border-border/60 shadow-card flex items-center justify-center"
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1, x, y }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 + i * 0.15 + oi * 0.1, duration: 0.5, type: "spring", stiffness: 200 }}
+                          whileHover={{ scale: 1.2 }}
+                        >
+                          <OrbitIcon className="w-3.5 h-3.5 text-muted-foreground" />
+                        </motion.div>
+                      );
+                    })}
+
+                    {/* Center icon */}
+                    <motion.div
+                      className="absolute inset-0 m-auto w-16 h-16 rounded-2xl bg-card border border-border/80 shadow-card flex items-center justify-center group-hover:shadow-glow group-hover:border-primary/30 transition-all duration-500"
+                      whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.5 } }}
+                    >
                       <item.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold flex items-center justify-center">
+                    </motion.div>
+
+                    {/* Step badge */}
+                    <span className="absolute top-1 right-4 w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold flex items-center justify-center">
                       {item.step}
                     </span>
                   </div>
