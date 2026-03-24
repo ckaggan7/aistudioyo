@@ -479,11 +479,11 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-sm text-muted-foreground">© 2026 AI STUDIYO. All rights reserved.</span>
+          <span className="text-sm text-muted-foreground">© 2026 AI STUDIYO by Whistle Media Networks. All rights reserved.</span>
           <div className="flex gap-6">
+            <Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact Us</Link>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>
       </footer>

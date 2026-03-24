@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone, ArrowLeft, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
