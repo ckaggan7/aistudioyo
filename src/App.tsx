@@ -16,6 +16,7 @@ import Analytics from "./pages/Analytics";
 import SettingsPage from "./pages/SettingsPage";
 import WaitlistPage from "./pages/WaitlistPage";
 import LoginPage from "./pages/LoginPage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<WaitlistPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/dashboard" element={<DashboardPage><DashboardHome /></DashboardPage>} />
           <Route path="/dashboard/generator" element={<DashboardPage><AIGenerator /></DashboardPage>} />
           <Route path="/dashboard/images" element={<DashboardPage><ImageGenerator /></DashboardPage>} />

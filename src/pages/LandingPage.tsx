@@ -1,6 +1,7 @@
 import { motion, type Transition } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, Palette, Calendar, ArrowRight, Zap, TrendingUp, Image, Check, MessageSquareText, Wand2, BarChart3, Send, PenLine, Layers } from "lucide-react";
+import heroIllustration from "@/assets/hero-illustration.png";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -72,7 +73,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <section className="relative min-h-screen flex items-center px-6 overflow-hidden">
         {/* Animated gradient background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-[hsl(40,95%,85%)] via-[hsl(330,80%,75%)] to-[hsl(260,85%,70%)] opacity-60" />
@@ -86,117 +87,102 @@ export default function LandingPage() {
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[hsl(280,80%,70%/0.4)] blur-[120px]"
           />
-          <motion.div
-            animate={{ x: [0, 20, -15, 0], y: [0, -15, 20, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(350,85%,75%/0.4)] blur-[100px]"
-          />
         </div>
 
-        {/* Floating tool icons */}
-        {[
-          { icon: Image, x: "10%", y: "20%", delay: 0 },
-          { icon: PenLine, x: "85%", y: "25%", delay: 0.5 },
-          { icon: Calendar, x: "8%", y: "70%", delay: 1 },
-          { icon: BarChart3, x: "88%", y: "65%", delay: 1.5 },
-          { icon: Wand2, x: "20%", y: "45%", delay: 0.8 },
-          { icon: Palette, x: "80%", y: "45%", delay: 1.2 },
-        ].map((item, i) => (
+        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-24 pb-16">
+          {/* Left – Hero Illustration */}
           <motion.div
-            key={i}
-            className="absolute hidden lg:flex w-11 h-11 rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-card items-center justify-center"
-            style={{ left: item.x, top: item.y }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.7, scale: 1, y: [0, -10, 0] }}
-            transition={{
-              opacity: { delay: 0.8 + item.delay, duration: 0.5 },
-              scale: { delay: 0.8 + item.delay, duration: 0.5, type: "spring" },
-              y: { delay: 1.3 + item.delay, duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            whileHover={{ opacity: 1, scale: 1.15 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
+            className="relative order-2 lg:order-1"
           >
-            <item.icon className="w-5 h-5 text-primary/70" />
+            <div className="relative">
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <img
+                  src={heroIllustration}
+                  alt="AI content creation studio illustration"
+                  width={1024}
+                  height={1024}
+                  className="w-full max-w-lg mx-auto drop-shadow-2xl"
+                />
+              </motion.div>
+              {/* Floating accent badges */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -top-2 right-4 lg:right-8 bg-card/90 backdrop-blur-sm rounded-xl border border-border/50 shadow-card px-3 py-2 flex items-center gap-2"
+              >
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-xs font-medium">AI Powered</span>
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-8 -left-2 lg:left-0 bg-card/90 backdrop-blur-sm rounded-xl border border-border/50 shadow-card px-3 py-2 flex items-center gap-2"
+              >
+                <TrendingUp className="w-4 h-4 text-primary" />
+                <span className="text-xs font-medium">10x Faster</span>
+              </motion.div>
+            </div>
           </motion.div>
-        ))}
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center max-w-4xl relative z-10"
-        >
-          {/* Badge */}
+          {/* Right – Content */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 shadow-card text-xs font-medium text-muted-foreground mb-8"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
+            className="order-1 lg:order-2 text-center lg:text-left"
           >
-            <motion.span
-              animate={{ rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 shadow-card text-xs font-medium text-muted-foreground mb-6"
             >
-              <Sparkles className="w-3.5 h-3.5 text-primary" />
-            </motion.span>
-            AI-powered content studio
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-primary" />
+              </motion.span>
+              AI-powered content studio
+            </motion.div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-6 text-foreground">
+              Create content
+              <br />
+              <span className="text-gradient-hero">with AI</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-foreground/60 max-w-lg mx-auto lg:mx-0 mb-10">
+              Generate captions, design visuals, and schedule posts — all in one studio.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 mb-8">
+              <Link to="/signup">
+                <Button size="lg" className="bg-gradient-hero text-primary-foreground hover:opacity-90 transition-opacity px-8 h-12 text-base rounded-full">
+                  Join the Waitlist <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/dashboard">
+                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base border-border/60">
+                  View Demo
+                </Button>
+              </Link>
+            </div>
+
+            {/* Social proof */}
+            <p className="text-xs text-muted-foreground">
+              Join 2,000+ creators on the waitlist
+            </p>
           </motion.div>
-
-          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.05] mb-6 text-foreground">
-            Create content
-            <br />
-            <span className="text-gradient-hero">with AI</span>
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl text-foreground/60 max-w-xl mx-auto mb-12"
-          >
-            Generate captions, design visuals, and schedule posts — all in one studio.
-          </motion.p>
-
-          {/* Prompt-style CTA card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="w-full max-w-xl mx-auto"
-          >
-            <Link to="/signup">
-              <div className="bg-card/90 backdrop-blur-xl rounded-2xl shadow-elevated border border-border/50 p-5 text-left hover:shadow-glow transition-all duration-500 cursor-pointer group hover:scale-[1.02]">
-                <p className="text-muted-foreground text-sm md:text-base mb-8">
-                  Describe the content you want to create...
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-1.5">
-                      {[Sparkles, Image, PenLine].map((Icon, idx) => (
-                        <div key={idx} className="w-6 h-6 rounded-full bg-secondary border border-border/50 flex items-center justify-center">
-                          <Icon className="w-3 h-3 text-muted-foreground" />
-                        </div>
-                      ))}
-                    </div>
-                    <span className="text-xs text-muted-foreground">Text · Image · Design</span>
-                  </div>
-                  <div className="w-9 h-9 rounded-full bg-foreground flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-4 h-4 text-background" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-
-          {/* Social proof */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-8 text-xs text-muted-foreground"
-          >
-            Join 2,000+ creators on the waitlist
-          </motion.p>
-        </motion.div>
+        </div>
       </section>
 
       {/* How It Works */}
@@ -493,11 +479,11 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-sm text-muted-foreground">© 2026 AI STUDIYO. All rights reserved.</span>
+          <span className="text-sm text-muted-foreground">© 2026 AI STUDIYO by Whistle Media Networks. All rights reserved.</span>
           <div className="flex gap-6">
+            <Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact Us</Link>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>
       </footer>
