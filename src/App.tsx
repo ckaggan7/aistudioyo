@@ -17,6 +17,9 @@ import SettingsPage from "./pages/SettingsPage";
 import WaitlistPage from "./pages/WaitlistPage";
 import LoginPage from "./pages/LoginPage";
 import ContactPage from "./pages/ContactPage";
+import StickerGenerator from "./pages/StickerGenerator";
+import BrandingCRM from "./pages/BrandingCRM";
+import TrendingTemplates from "./pages/TrendingTemplates";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +46,9 @@ const App = () => (
           <Route path="/dashboard/calendar" element={<DashboardPage><ContentCalendar /></DashboardPage>} />
           <Route path="/dashboard/media" element={<DashboardPage><MediaLibrary /></DashboardPage>} />
           <Route path="/dashboard/trends" element={<DashboardPage><TrendEngine /></DashboardPage>} />
+          <Route path="/dashboard/templates" element={<DashboardPage><TrendingTemplates /></DashboardPage>} />
+          <Route path="/dashboard/stickers" element={<DashboardPage><StickerGenerator /></DashboardPage>} />
+          <Route path="/dashboard/branding" element={<DashboardPage><BrandingCRM /></DashboardPage>} />
           <Route path="/dashboard/analytics" element={<DashboardPage><Analytics /></DashboardPage>} />
           <Route path="/dashboard/settings" element={<DashboardPage><SettingsPage /></DashboardPage>} />
           <Route path="*" element={<NotFound />} />

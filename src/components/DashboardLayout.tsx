@@ -12,6 +12,9 @@ import {
   Settings,
   Menu,
   X,
+  Flame,
+  Sticker,
+  Briefcase,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +23,9 @@ const navItems = [
   { icon: Sparkles, label: "AI Generator", path: "/dashboard/generator" },
   { icon: Image, label: "Image Generator", path: "/dashboard/images" },
   { icon: Palette, label: "Design Studio", path: "/dashboard/design" },
+  { icon: Flame, label: "Trending Templates", path: "/dashboard/templates" },
+  { icon: Sticker, label: "Sticker Generator", path: "/dashboard/stickers" },
+  { icon: Briefcase, label: "Branding CRM", path: "/dashboard/branding" },
   { icon: Calendar, label: "Content Calendar", path: "/dashboard/calendar" },
   { icon: FolderOpen, label: "Media Library", path: "/dashboard/media" },
   { icon: TrendingUp, label: "Trend Engine", path: "/dashboard/trends" },
