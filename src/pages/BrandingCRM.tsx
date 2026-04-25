@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Briefcase, Plus, Palette, Type, Image as ImageIcon, FileText, Users, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Squiggle, Star as DoodleStar } from "@/components/Doodles";
+import { Squiggle, StarDoodle } from "@/components/Doodles";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
@@ -46,7 +46,7 @@ export default function BrandingCRM() {
   return (
     <div className="relative">
       <div className="absolute -top-2 right-20 hidden md:block opacity-60">
-        <DoodleStar className="w-10 h-10 text-primary" delay={0.2} />
+        <StarDoodle className="w-10 h-10 text-primary" />
       </div>
 
       <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="flex flex-wrap items-center justify-between gap-4 mb-8">

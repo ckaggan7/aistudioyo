@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Flame, Heart, Eye, Bookmark, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Squiggle, Spiral } from "@/components/Doodles";
+import { Squiggle, SpiralDoodle } from "@/components/Doodles";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
@@ -29,7 +29,7 @@ export default function TrendingTemplates() {
   return (
     <div className="relative">
       <div className="absolute top-0 right-10 hidden md:block opacity-60">
-        <Spiral className="w-20 h-20 text-accent" />
+        <SpiralDoodle className="w-20 h-20 text-accent" />
       </div>
 
       <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-8">

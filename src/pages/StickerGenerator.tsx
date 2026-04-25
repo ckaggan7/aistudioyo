@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Sticker, Sparkles, Download, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Squiggle, Star as DoodleStar, Spiral } from "@/components/Doodles";
+import { Squiggle, StarDoodle, SpiralDoodle } from "@/components/Doodles";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
@@ -31,7 +31,7 @@ export default function StickerGenerator() {
         <Squiggle className="w-24 h-12 text-primary" />
       </div>
       <div className="absolute top-20 right-40 hidden md:block">
-        <DoodleStar className="w-8 h-8 text-accent" delay={0.4} />
+        <StarDoodle className="w-8 h-8 text-accent" />
       </div>
 
       <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-8">
@@ -110,7 +110,7 @@ export default function StickerGenerator() {
       </motion.div>
 
       <div className="absolute bottom-4 left-10 hidden md:block opacity-50">
-        <Spiral className="w-16 h-16 text-accent" />
+        <SpiralDoodle className="w-16 h-16 text-accent" />
       </div>
     </div>
   );
