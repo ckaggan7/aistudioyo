@@ -114,6 +114,28 @@ export default function AIGenerator() {
             </Select>
           </div>
           <div>
+            <label className="text-sm font-medium mb-1.5 block">Output Language</label>
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="native">Native (Auto-detect)</SelectItem>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="te">తెలుగు · Telugu</SelectItem>
+                <SelectItem value="hi">हिन्दी · Hindi</SelectItem>
+                <SelectItem value="ta">தமிழ் · Tamil</SelectItem>
+                <SelectItem value="kn">ಕನ್ನಡ · Kannada</SelectItem>
+                <SelectItem value="ml">മലയാളം · Malayalam</SelectItem>
+                <SelectItem value="mr">मराठी · Marathi</SelectItem>
+                <SelectItem value="bn">বাংলা · Bengali</SelectItem>
+                <SelectItem value="gu">ગુજરાતી · Gujarati</SelectItem>
+                <SelectItem value="pa">ਪੰਜਾਬੀ · Punjabi</SelectItem>
+                <SelectItem value="ur">اردو · Urdu</SelectItem>
+                <SelectItem value="te-en">Tenglish (Telugu + English)</SelectItem>
+                <SelectItem value="hi-en">Hinglish (Hindi + English)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
             <label className="text-sm font-medium mb-1.5 block">Topic</label>
             <Textarea placeholder="What's your post about?" value={topic} onChange={(e) => setTopic(e.target.value)} rows={3} />
           </div>
