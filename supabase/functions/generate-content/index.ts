@@ -9,17 +9,36 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { platform, contentType, brand, audience, tone, topic } = await req.json();
+    const { platform, contentType, brand, audience, tone, topic, language } = await req.json();
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `You are a social media content expert. Generate engaging content for ${platform}. 
+    const langMap: Record<string, string> = {
+      native: "the same language as the user's topic input (auto-detect)",
+      en: "English",
+      te: "Telugu (తెలుగు script)",
+      hi: "Hindi (Devanagari script)",
+      ta: "Tamil (தமிழ் script)",
+      kn: "Kannada (ಕನ್ನಡ script)",
+      ml: "Malayalam (മലയാളം script)",
+      mr: "Marathi (Devanagari script)",
+      bn: "Bengali (বাংলা script)",
+      gu: "Gujarati (ગુજરાતી script)",
+      pa: "Punjabi (ਗੁਰਮੁਖੀ script)",
+      ur: "Urdu (اردو script)",
+      "te-en": "Tenglish — natural mix of Telugu words written in Roman/English script with English",
+      "hi-en": "Hinglish — natural mix of Hindi words written in Roman/English script with English",
+    };
+    const languageInstruction = langMap[language] || langMap.native;
+
+    const systemPrompt = `You are a social media content expert. Generate engaging content for ${platform}.
 Return a JSON object with exactly these keys: hook, caption, description, hashtags.
 - hook: A short attention-grabbing opening line with an emoji
 - caption: A compelling 2-3 sentence caption
 - description: A brief meta description of the content
 - hashtags: 8-12 relevant hashtags as a single string starting with #
+Write the hook, caption and description in ${languageInstruction}. Hashtags can stay in English/Roman script for discoverability.
 Keep the tone ${tone}. Target audience: ${audience || "general audience"}. Brand: ${brand || "the creator"}.`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

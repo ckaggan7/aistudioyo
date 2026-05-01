@@ -19,6 +19,7 @@ export default function AIGenerator() {
   const [brand, setBrand] = useState("");
   const [audience, setAudience] = useState("");
   const [tone, setTone] = useState("casual");
+  const [language, setLanguage] = useState("native");
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{
@@ -36,7 +37,7 @@ export default function AIGenerator() {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-content", {
-        body: { platform, contentType, brand, audience, tone, topic },
+        body: { platform, contentType, brand, audience, tone, topic, language },
       });
 
       if (error) throw error;
@@ -109,6 +110,28 @@ export default function AIGenerator() {
                 <SelectItem value="professional">Professional</SelectItem>
                 <SelectItem value="funny">Funny</SelectItem>
                 <SelectItem value="inspirational">Inspirational</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1.5 block">Output Language</label>
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="native">Native (Auto-detect)</SelectItem>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="te">తెలుగు · Telugu</SelectItem>
+                <SelectItem value="hi">हिन्दी · Hindi</SelectItem>
+                <SelectItem value="ta">தமிழ் · Tamil</SelectItem>
+                <SelectItem value="kn">ಕನ್ನಡ · Kannada</SelectItem>
+                <SelectItem value="ml">മലയാളം · Malayalam</SelectItem>
+                <SelectItem value="mr">मराठी · Marathi</SelectItem>
+                <SelectItem value="bn">বাংলা · Bengali</SelectItem>
+                <SelectItem value="gu">ગુજરાતી · Gujarati</SelectItem>
+                <SelectItem value="pa">ਪੰਜਾਬੀ · Punjabi</SelectItem>
+                <SelectItem value="ur">اردو · Urdu</SelectItem>
+                <SelectItem value="te-en">Tenglish (Telugu + English)</SelectItem>
+                <SelectItem value="hi-en">Hinglish (Hindi + English)</SelectItem>
               </SelectContent>
             </Select>
           </div>
