@@ -37,7 +37,7 @@ export default function AIGenerator() {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-content", {
-        body: { platform, contentType, brand, audience, tone, topic },
+        body: { platform, contentType, brand, audience, tone, topic, language },
       });
 
       if (error) throw error;
