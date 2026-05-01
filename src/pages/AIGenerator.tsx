@@ -19,6 +19,7 @@ export default function AIGenerator() {
   const [brand, setBrand] = useState("");
   const [audience, setAudience] = useState("");
   const [tone, setTone] = useState("casual");
+  const [language, setLanguage] = useState("native");
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{
