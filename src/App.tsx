@@ -20,6 +20,7 @@ import ContactPage from "./pages/ContactPage";
 import StickerGenerator from "./pages/StickerGenerator";
 import BrandingCRM from "./pages/BrandingCRM";
 import TrendingTemplates from "./pages/TrendingTemplates";
+import ImageStudio from "./pages/ImageStudio";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/dashboard" element={<DashboardPage><DashboardHome /></DashboardPage>} />
           <Route path="/dashboard/generator" element={<DashboardPage><AIGenerator /></DashboardPage>} />
           <Route path="/dashboard/images" element={<DashboardPage><ImageGenerator /></DashboardPage>} />
+          <Route path="/dashboard/image-studio" element={<DashboardPage><ImageStudio /></DashboardPage>} />
           <Route path="/dashboard/design" element={<DashboardPage><DesignStudio /></DashboardPage>} />
           <Route path="/dashboard/calendar" element={<DashboardPage><ContentCalendar /></DashboardPage>} />
           <Route path="/dashboard/media" element={<DashboardPage><MediaLibrary /></DashboardPage>} />
