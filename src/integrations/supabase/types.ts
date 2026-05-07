@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      generations: {
+        Row: {
+          created_at: string
+          generated_prompt: string | null
+          id: string
+          image_url: string
+          mode: string
+          prompt: string
+          style: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          generated_prompt?: string | null
+          id?: string
+          image_url: string
+          mode?: string
+          prompt: string
+          style?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          generated_prompt?: string | null
+          id?: string
+          image_url?: string
+          mode?: string
+          prompt?: string
+          style?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       waitlist: {
         Row: {
           created_at: string
