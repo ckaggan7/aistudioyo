@@ -15,6 +15,7 @@ import {
   Flame,
   Sticker,
   Briefcase,
+  Wand2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Sparkles, label: "AI Generator", path: "/dashboard/generator" },
   { icon: Image, label: "Image Generator", path: "/dashboard/images" },
+  { icon: Wand2, label: "Image Studio", path: "/dashboard/image-studio", badge: "NEW" },
   { icon: Palette, label: "Design Studio", path: "/dashboard/design" },
   { icon: Flame, label: "Trending Templates", path: "/dashboard/templates" },
   { icon: Sticker, label: "Sticker Generator", path: "/dashboard/stickers" },
