@@ -78,7 +78,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 )}
               >
                 <item.icon className="w-4.5 h-4.5" />
-                {item.label}
+                <span className="flex-1">{item.label}</span>
+                {("badge" in item) && (item as any).badge && (
+                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-gradient-hero text-primary-foreground">{(item as any).badge}</span>
+                )}
               </Link>
             );
           })}
